@@ -3,7 +3,7 @@ require "sinatra/reloader" if development?
 
 
 get '/' do
-  "Hello World"
+  "Hello"
 end
 
 get '/secret' do
@@ -18,9 +18,25 @@ get '/matt' do
   "Hi Adam"
 end
 
-get '/cat' do
+get '/random-cat' do
+  @name = ["Chester", "Finneas", "Dog Food"].sample
   erb(:index)
 end
+
+get '/doozy' do
+  erb(:cat_form)
+end
+
+post '/named-cat' do
+  p params
+  @name = params[:name]
+  erb(:index)
+end
+
+
+
+
+
 
 
 
